@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include("partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/productDetail.css">
+    <title>Detalle de producto - Geek Store</title>
+    <body>
+    <%- include("partials/header.ejs") %>
+    <main>
+        <section class= "main-view">
+    <div class="productoX">
+        <article>
+        <div class="parte1">
+            <img src="/img/products/<%= product.img%>">
+            <div class= "articulo">
+                <p class="descripcion"><%= product.description%></p>
+            </div>
+        </div>
+            <div class="detallesProd">
+        <form action="/productos/productCart" method="GET">
+            <label>Elegí el color:</label> 
+            <select name="color">
+                 <option value="#000000">Negro</option>
+                 <option value="#ffffff">Blanco</option>
+                 <option value="#e5e5e5">Gris</option>
+                 <option value="#14213d">Azul</option>
+                 <option value="#1b4332">Verde</option>
+            </select>
+
+            <label>Elegí el talle:</label> 
+            <select name="size">
+                 <option value="XS">XS</option>
+                 <option value="S">S</option>
+                 <option value="M">M</option>
+                 <option value="L">L</option>
+                 <option value="XL">XL</option>
+            </select>
+        
+                <label>CANTIDAD</label> 
+                <input id="cantidad"type="number" name="cantidad" value="1" min="0" max="10" step="1">
+
+            <h2 class="total">TOTAL: <%= product.price%></h2>
+            <h2>
+                <button type="submit" class="enviar">AGREGAR AL CARRITO</button>
+            </h2>
+        </div>
+    </form>
+    </article>
+    </div>
+    </main>
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>
+
+
+

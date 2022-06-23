@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include("partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/register.css">
+    <title>Registrate en Geek Store</title>
+<body>
+    <%- include("partials/header.ejs") %>
+<main>   
+    <form id= "uno"action="/usuarios/registro" method="POST" enctype="multipart/form-data">
+        <br/>       
+        <nav>
+        <h2>¡Registrate acá!</h2>
+        <div class="nombre">         
+            <label for="name"></label>
+            <input placeholder="Nombre y apellido" type="text" name="name" id="name" value="<%= locals.old && old.name ? old.name: ""%>">
+                <% if (locals.errors && errors.name) {%>
+                <p id="errores">
+                    <%= errors.name.msg %> 
+                </p>   
+                <% } %>                             
+            <input placeholder="Correo electrónico" type="text" name="email" id="email" value="<%= locals.old && old.email ? old.email: ""%>" required> 
+            <% if (locals.errors && errors.email) {%>
+                <p class="emailError" id="errores">
+                    <%= errors.email.msg %> 
+                </p>   
+                <% } %>  
+                <p class="emailError errores"></p>
+        </div>                    
+            <input placeholder="Ciudad" type="text" name="city" id="ciudad" value="<%= locals.old && old.city ? old.city: ""%>">
+            <% if (locals.errors && errors.city) {%>
+                <p id="errores">
+                    <%= errors.city.msg %> 
+                </p>   
+            <% } %>
+        </div>       
+           
+        </div>
+        <h3 class="foto-user">Foto de usuario</h3>   
+        <div>
+        <input type="file" name="img" id="archivo" accept=".png, .jpeg, .jpg, .gif">        
+        </div>
+        <label for="user"></label>
+            <input placeholder="Nombre de usuario" type="text" name="user" id="user" value="<%= locals.old && old.user ? old.user: ""%>" required>
+            <% if (locals.errors && errors.user) {%>
+                <p class="userError" id="errores">
+                    <%= errors.user.msg %> 
+                </p>   
+            <% } %>  
+            <p class="userError errores"></p>
+        <div class="clave">
+            <p><input placeholder="Contraseña" type="password" name="password" id="password" required></p>
+            <% if (locals.errors && errors.password) {%>
+                <p class="passwordError" id="errores">
+                    <%= errors.password.msg %> 
+                </p>   
+            <% } %>  
+            <p class="passwordError errores" ></p>
+
+        <br/> 
+        <div class="submit">      
+            <input type="submit" name="submit" id="enviar" value="ENVIAR"> </input>
+            <br/>
+            <input type="reset" name="reset" id="borrar" value="BORRAR"> </input>
+            <br/>
+            <a href="/"><button id="vuelvo">Volver a Pagina Principal</button></a>
+        </div>       
+        </nav>
+    </form>    
+</main>  
+<%- include("partials/footer.ejs") %>
+<script src="/js/register.js"></script>
+</body>
+</html>
+

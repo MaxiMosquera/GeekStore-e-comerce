@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("partials/head.ejs") %>
+<title>Página principal de Geek Store</title>
+<body>
+<%- include("partials/header.ejs") %>
+<main>
+    <section class="slide">
+        <div class="slide-inner">
+            <input class="slide-open" type="radio" id="slide-1" 
+                  name="slide" aria-hidden="true" hidden="" checked="checked">
+            <div class="slide-item">
+                <img src=/img/bienvenidos.png>
+            </div>
+            <input class="slide-open" type="radio" id="slide-2" 
+                  name="slide" aria-hidden="true" hidden="">
+            <div class="slide-item">
+                <img src="/img/banner-2.png">
+            </div>
+            <input class="slide-open" type="radio" id="slide-3" 
+                  name="slide" aria-hidden="true" hidden="">
+            <div class="slide-item">
+                <img src="/img/sale.png">
+            </div>
+            <label for="slide-3" class="slide-control prev control-1">‹</label>
+            <label for="slide-2" class="slide-control next control-1">›</label>
+            <label for="slide-1" class="slide-control prev control-2">‹</label>
+            <label for="slide-3" class="slide-control next control-2">›</label>
+            <label for="slide-2" class="slide-control prev control-3">‹</label>
+            <label for="slide-1" class="slide-control next control-3">›</label>
+            <ol class="slide-indicador">
+                <li>
+                    <label for="slide-1" class="slide-circulo">•</label>
+                </li>
+                <li>
+                    <label for="slide-2" class="slide-circulo">•</label>
+                </li>
+                <li>
+                    <label for="slide-3" class="slide-circulo">•</label>
+                </li>
+            </ol>
+        </div>
+    </section>
+    
+    <section class="search-bar">
+        <div class="form" action="#" method="GET">
+            <input type="search" name="busqueda" placeholder="Buscar productos, licencias y más">
+            <button type="submit" aria-placeholder="fa fa-search"><i class="fa fa-search"></i></button>                
+        </div>
+    </section>    
+    <br>
+    <section class="productosRelacionados">
+        <h3 class="subtitulo">Algunos de nuestros productos:</h3>
+        <div class="productos">
+            <% products.forEach(function(product){ %>
+            <article class="product">
+                <button id="producto"><a href="/productos/<%= product.id%>">
+                <img src="/img/products/<%= product.img%>" >
+            <div class="articulo">
+                <p class="precio">$ <%= product.price%></p>
+                <p class="descuento"><%= product.discount%> % OFF</p>
+                <h4 class="descripciones"><%= product.description%></h4>
+            </div>
+            </a></button>
+            <button id="carrito"><a href="/productos/productCart">Añadir al carrito</a></button>
+            </article>
+             
+            <% }) %>
+        </div>
+    </section>
+    </main>
+<%- include("partials/footer.ejs") %>
+</body>
+</html>
+
+
+
